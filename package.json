@@ -4,6 +4,8 @@
   "description": "A simple landing page built with Tailwind CSS and Flowbite",
   "main": "index.js",
   "scripts": {
+    "start": "npx tailwindcss -i ./input.css -o ./output.css --watch",
+    "pakage": "node ./single/pakage.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
