@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的海报</title>
+    <!-- tailwindcss -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+    <!-- alpinejs -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+</head>
+
+<body x-data="data()">
+    <div id="content" class="flex flex-col items-center justify-center min-h-screen bg-[#b4d6d7] p-4">
+        <div class="w-full max-w-sm space-y-4 bg-[#b4d6d7]">
+            <div class="space-y-2">
+                <label
+                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    for="title">
+                    海报标题
+                </label>
+                <input x-model="title"
+                    class="flex w-full h-10 px-3 py-2 text-sm border rounded-md border-input bg-background ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    id="title" placeholder="title" />
+            </div>
+            <div class="space-y-2">
+                <label
+                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    for="subtitle">
+                    海报副标题
+                </label>
+                <input x-model="subtitle"
+                    class="flex w-full h-10 px-3 py-2 text-sm border rounded-md border-input bg-background ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    id="subtitle" placeholder="subtitle" />
+            </div>
+            <div class="space-y-2">
+                <label
+                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    for="content">
+                    海报内容
+                </label> 
+                <textarea x-model="content"
+                    class="w-full px-3 py-2 text-gray-700 border rounded-md resize h-80 focus:outline-none focus:shadow-outline"
+                    id="recommendation" placeholder="写下..."></textarea>
+
+            </div>
+            <div class="flex justify-between"><button x-on:click="clean"
+                    class="inline-flex items-center justify-center w-full h-10 px-4 py-2 text-sm font-medium transition-colors rounded-md whitespace-nowrap ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90"
+                    type="button">
+                    清空
+                </button>
+                <button x-on:click="generate"
+                    class="inline-flex items-center justify-center w-full h-10 px-4 py-2 text-sm font-medium transition-colors rounded-md whitespace-nowrap ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90"
+                    type="button">
+                    生成
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function data() {
+            return {
+                title: '关于店铺转移问题', subtitle: '已从4.1延迟到7.1', content: '先观望，后期会出新规则应对，不要转，不要转，不要转！耐心等待，还是可以正常使用。已经转了的然后店铺被封了的，去询问人工客服解决问题。客服是说usd店铺可以多开一个用来转移，各种情况太多，不做一一解答。先观望，后期会出新规则应对，不要转，不要转，不要转！耐心等待，还是可以正常使用。已经转了的然后店铺被封了的，去询问人工客服解决问题。客服是说usd店铺可以多开一个用来转移，各种情况太多，不做一一解答。',
+                generate() {
+                    let url = 'https://moyu.wonder-china.ru/html/cd38c72b0dce417c81e1fa218f02aa15?title=' + encodeURI(this.title) + '&subtitle=' + encodeURI(this.subtitle) + '&content=' + encodeURI(this.content);
+                    console.log(url)
+                    window.open(url, '_blank');
+                },
+                clean() {
+                    this.title = '';
+                    this.subtitle = '';
+                    this.content = '';
+                    console.log('clean')
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
