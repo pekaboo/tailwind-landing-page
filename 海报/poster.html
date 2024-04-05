@@ -8,11 +8,11 @@
     <!-- tailwindcss -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- alpinejs -->
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
     <style>
-        #content::after { 
-            content: "轻 舟 跨 境"; 
+        #content::after {
+            content: "轻 舟 跨 境";
             position: absolute;
             font-size: 30px;
             top: 50%;
@@ -21,9 +21,10 @@
             opacity: 0.3;
             transform: translate(-50%, -50%) rotate(-30deg);
             color: #8df591;
-        }  
-        #content2::after { 
-            content: "轻 舟 跨 境"; 
+        }
+
+        #content2::after {
+            content: "轻 舟 跨 境";
             position: absolute;
             font-size: 30px;
             top: 100%;
@@ -32,8 +33,8 @@
             opacity: 0.3;
             transform: translate(-50%, -50%) rotate(-30deg);
             color: #8df591;
-        }  
-    </style>  
+        }
+    </style>
 </head>
 
 <body x-data="{ title: '', subtitle: '', content: [], getUrlParams: function() {
@@ -44,63 +45,52 @@
         console.log(params.get('content'))
         console.log(this.content)
     } }" x-init="getUrlParams()">
-    <!--
-// v0 by Vercel.
-// https://v0.dev/t/oCGtI6UtkRL
--->
     <div id="content" class="flex flex-col items-center justify-center min-h-screen bg-[#b4d6d7] p-4">
-        <div class="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg"> 
-            <div style="background-image: url(bg.png);" >
-                <div class="z-50 flex flex-col items-center">
-                    <img  src="header.png" alt="">
-                </div>
-                <div class="px-4 pb-4" id="content2">
-                    <div   style="      margin-top: -69px;
-                    margin-right: -6px;
-                    padding-top: 83px;  
-                    min-height: 400px;  
-                    " class="  flex flex-col justify-center   items-left  bg-[#453fee] p-4   ">
-                        <div class="watermarkPattern"></div>
-
-                        <div class="flex justify-between">
-                            <p id="header" class="mb-4 text-xl font-bold text-white" x-text="title"></p>
-                            <div class="mb-4 font-bold text-white text-md" x-text="subtitle"></div>
-                        </div>
-                        <!-- <div class="">
-                            <div class="text-white ext-base" x-text="content"></div>
-                        </div> -->
-                        <template x-for="(item, index) in content" :key="index"><div class="text-white ext-base" x-text="item"></div></template>
-                    </div>
-                </div>
-           
-<!-- 你的内容在这里 -->
-</div>
-
-                <div class="flex flex-col justify-center p-6 items-left ">
+        <div class="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg">
+            <div class="flex flex-col items-center" style="background-image: url(bg.png);">
+                <img class="z-50 " src="header.png" alt="">
+                <div style="margin: -69px -14px 0px 0px;
+                padding: 80px 30px 10px 10px; 
+                " class=" flex flex-col justify-center   items-left  bg-[#453fee]" id="content2">
+                    <div class="watermarkPattern"></div> 
                     <div class="flex justify-between">
-                        <div class="flex-col">
-                              <div class="text-lg font-bold font-black-700 ">扫码一起交流 >>></div>
-                              <div>扫码领取干货</div>
-                        </div>
-                        <div>
-                            <img  class="rounded-sm w-14" src="qrcode.jpg" alt="">
-                        </div> 
+                        <p id="header" class="mb-4 text-xl font-bold text-white" x-text="title"></p>
+                        <div class="mb-4 font-bold text-white text-md" x-text="subtitle"></div>
                     </div>
-
+                    <!-- <div class="">
+                <div class="text-white ext-base" x-text="content"></div>
+            </div> -->
+                    <template x-for="(item, index) in content" :key="index">
+                        <div class="text-white ext-base" x-text="item"></div>
+                    </template>
                 </div>
+            </div>
+            <!-- footer -->
+            <div class="flex flex-col justify-center p-6 items-left ">
+                <div class="flex justify-between">
+                    <div class="flex-col">
+                        <div class="text-lg font-bold font-black-700 ">扫码一起交流 >>></div>
+                        <div>扫码领取干货</div>
+                    </div>
+                    <div>
+                        <img class="rounded-sm w-14" src="qrcode.jpg" alt="">
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
+    </div>
     <script>
-        document.getElementById('header').addEventListener('click', function() {
+        document.getElementById('header').addEventListener('click', function () {
             html2canvas(document.getElementById("content")).then(canvas => {
-              var img = canvas.toDataURL("image/png");
-              var link = document.createElement('a');
-              link.href = img;
-              link.download = 'download.png';
-              link.click();
+                var img = canvas.toDataURL("image/png");
+                var link = document.createElement('a');
+                link.href = img;
+                link.download = 'download.png';
+                link.click();
             });
-          });
+        });
     </script>
     <!-- http://127.0.0.1:5502/海报/poster.html?title=关于店铺转移问题&subtitle=已从4.1延迟到7.1&content=你好你\n好 -->
 </body>
